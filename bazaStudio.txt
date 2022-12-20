@@ -1,0 +1,72 @@
+CREATE TABLE `Role`
+(
+ `id_role`   integer NOT NULL ,
+ `role_name` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`id_role`)
+);
+
+
+CREATE TABLE `Studia`
+(
+ `id_studio`    integer NOT NULL ,
+ `Miejscowosc`  varchar(45) NOT NULL ,
+ `Ulica`        varchar(45) NOT NULL ,
+ `Kod pocztowy` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`id_studio`)
+);
+
+CREATE TABLE `User`
+(
+ `id_user`   integer NOT NULL ,
+ `login`     varchar(45) NOT NULL ,
+ `id_role`   integer NOT NULL ,
+ `password`  varchar(45) NOT NULL ,
+ `email`     varchar(45) NOT NULL ,
+ `name`      varchar(45) NOT NULL ,
+ `surname`   varchar(45) NOT NULL ,
+ `birthdate` date NOT NULL ,
+
+PRIMARY KEY (`id_user`),
+KEY `FK_2` (`id_role`),
+CONSTRAINT `FK_1` FOREIGN KEY `FK_2` (`id_role`) REFERENCES `Role` (`id_role`)
+);
+
+
+
+CREATE TABLE `Owners`
+(
+ `id_owner`    integer   NOT NULL ,
+ `owner_name`    varchar(45) NOT NULL ,
+ `id_studio`     integer NOT NULL ,
+ `owner_surname` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`id_owner`),
+KEY `FK_2` (`id_studio`),
+CONSTRAINT `FK_4_1` FOREIGN KEY `FK_2` (`id_studio`) REFERENCES `Studia` (`id_studio`)
+);
+
+
+
+CREATE TABLE `Reservation`
+(
+ `id_res`       integer NOT NULL ,
+ `date_res`     date NOT NULL ,
+ `id_studio`    integer NOT NULL ,
+ `id_user`      integer NOT NULL ,
+ `time_res`     time NOT NULL ,
+ `rodzaj`       varchar(45) NOT NULL ,
+ `potwierdzona` varchar(3) NOT NULL ,
+
+PRIMARY KEY (`id_res`),
+KEY `FK_2` (`id_user`),
+CONSTRAINT `FK_2` FOREIGN KEY `FK_2` (`id_user`) REFERENCES `User` (`id_user`),
+KEY `FK_3` (`id_studio`),
+CONSTRAINT `FK_4` FOREIGN KEY `FK_3` (`id_studio`) REFERENCES `Studia` (`id_studio`)
+);
+
+
+
+
+
