@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<ui:composition template="/templates/page-template.xhtml">
+	
+	<ui:define name="pageContent">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Baza rezerwacji</title>
+</h:head>
+<h:body style=" margin: 0.5em;">
+
+	<p:panel header="Opcje wyszukiwania"  
+		style="margin-bottom: 1em;">
+		
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Wprowadz date:" />
+				<p:inputText value="#{rezListBB.data}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+				
+			</h:panelGrid>
+			
+		</h:form>
+		
+	</p:panel>
+
+	<p:messages />
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+
+		<p:commandButton value="Dodaj nową rezerwacje"
+					action="#{rezListBB.newRezerwacja()}" style="margin-bottom:1em;" />
+
+
+		<p:dataTable value="#{rezListBB.getList()}" var="i">
+
+			<p:column priority="1">
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{i.idRezerwacja}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Data" />
+				</f:facet>
+				<h:outputText value="#{i.data}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Godzina" />
+				</f:facet>
+				<h:outputText value="#{i.godzina}" />
+
+			</p:column>
+
+			<p:column priority="4">
+				<f:facet name="header">
+					<h:outputText value="Potwierdzona" />
+				</f:facet>
+				<h:outputText value="#{i.potwierdzona}">
+
+				</h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="zakonczona" />
+				</f:facet>
+				<h:outputText value="#{i.zakonczona}">
+
+				</h:outputText>
+			</p:column>
+
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+				
+				<p:commandButton style="margin-right:2em" value="Edytuj"
+							action="#{rezListBB.editRezerwacja(i)}" />
+
+
+
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</ui:define>
+	
+</ui:composition>
+</html>

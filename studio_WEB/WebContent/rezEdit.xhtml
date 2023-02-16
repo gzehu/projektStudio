@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<f:metadata>
+			<f:viewAction action="#{rezEditBB.onLoad()}" />
+		</f:metadata>
+
+		<h:head>
+			<meta charset="utf-8" />
+
+		</h:head>
+
+		<h:body style=" margin: 0.5em;">
+
+			<p:panel toggleable="true" header="Edycja rekordu">
+
+				<h:form rendered="#{rezEditBB.rezerwacja != null}">
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<h:outputLabel for="i-idRezerwacja" value="#{txtRez.id}" />
+						<p:inputText id="i-idRezerwacja" value="#{rezEditBB.rezerwacja.idRezerwacja}"
+							required="true" requiredMessage="podaj idRezerwacja"
+							validatorMessage="co najwyżej 40 znaków">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="i-idRezerwacja" display="icon" />
+
+						<h:outputLabel for="i-data" value="#{txtRez.data}" />
+						<p:inputText id="i-data" value="#{rezEditBB.rezerwacja.data}"
+							required="true" requiredMessage="podaj marke"
+							validatorMessage="co najwyżej 40 znaków" >
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="i-data" display="icon" />
+
+
+						<h:outputLabel for="i-godzina" value="#{txtRez.godzina}" />
+						<p:inputText id="i-godzina" value="#{rezEditBB.rezerwacja.godzina}"
+							required="true" requiredMessage="podaj godzina"
+							>
+						</p:inputText>
+						<p:message for="i-godzina" display="icon" />
+
+
+					<h:outputLabel for="i-potwierdzona" value="#{txtRez.potwierdzona}" />
+						<p:inputText id="i-potwierdzona" value="#{rezEditBB.rezerwacja.potwierdzona}"
+							required="true" requiredMessage="Podaj typ nadwozia"
+							validatorMessage="co najwyżej 40 znaków">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="i-potwierdzona" display="icon" />
+						
+						
+						<h:outputLabel for="i-zakonczona" value="#{txtRez.zakonczona}" />
+						<p:inputText id="i-zakonczona" value="#{rezEditBB.rezerwacja.zakonczona}"
+							required="true" requiredMessage="Podaj rok produkcji"
+							validatorMessage="co najwyżej 40 znaków">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="i-zakonczona" display="icon" />
+						
+						<h:outputLabel for="i-imie" value="#{txtRez.imie}" />
+						<p:inputText id="i-imie" value="#{rezEditBB.rezerwacja.imie}"
+							required="true" requiredMessage="Podaj pojemnosc silnika"
+							validatorMessage="co najwyżej 40 znaków">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="i-imie" display="icon" />
+						
+						<h:outputLabel for="i-nazwisko" value="#{txtRez.nazwisko}" />
+						<p:inputText id="i-nazwisko" value="#{rezEditBB.rezerwacja.nazwisko}"
+							required="true" requiredMessage="Podaj login"
+							validatorMessage="co najwyżej 40 znaków">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="i-nazwisko" display="icon" />
+						
+						
+						
+						
+
+
+					</h:panelGrid>
+
+					<p:messages id="msgs" />
+
+					<p:commandButton value="#{txtRez.saveEdit}" action="#{rezEditBB.saveData()}"
+						style="margin-right: 1em;" update="@form" />
+
+					<p:button value="#{txtRez.cancelEdit}" outcome="rezList" />
+				</h:form>
+
+			</p:panel>
+
+		</h:body>
+	</ui:define>
+
+</ui:composition>
+</html>

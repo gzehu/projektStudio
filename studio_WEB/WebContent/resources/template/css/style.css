@@ -1,0 +1,40 @@
+body {
+	font-family: 'Century Gothic', helvetica, verdana, arial;
+	 background: url("../img/w1.jpg.jsf?ln=template") no-repeat center center
+		fixed; 
+	
+	background-size : cover;
+	margin: 50px;
+	background-size: cover;
+}
+
+.bottom-space {
+	margin-bottom: 1em;
+}
+
+.top-space {
+	margin-top: 1em;
+}
+
+#page_wrapper {
+	margin: 1em;
+	min-width: 700px;
+}
+
+button.ui-button {
+	margin-right: .5rem;
+}
+
+#bla{
+	position:relative;
+	left:430px;
+	
+}
+
+#content{
+margin-top: 100px;
+}
+
+.panelGridCenter {
+    margin: 0 auto;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<f:metadata>
+			<f:viewAction action="#{uzytkownikEditBB.onLoad()}" />
+		</f:metadata>
+
+		<h:head>
+			<meta charset="utf-8" />
+
+		</h:head>
+
+		<h:body style=" margin: 0.5em;">
+
+			<p:panel toggleable="true" header="Edycja rekordu">
+
+				<h:form rendered="#{uzytkownikEditBB.uzytkownik != null}">
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<h:outputLabel for="u-login" value="login:" />
+						<p:inputText id="u-login" value="#{uzytkownikEditBB.uzytkownik.login}"
+							required="true" requiredMessage="Podaj login"
+							validatorMessage="co najwyżej 40 znaków">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="u-login" display="icon" />
+
+						<h:outputLabel for="u-email" value="email:" />
+						<p:inputText id="u-email" value="#{uzytkownikEditBB.uzytkownik.email}"
+							required="true" requiredMessage="podaj email"
+							validatorMessage="co najwyżej 40 znaków" type="email">
+							<f:validateLength maximum="40" />
+						</p:inputText>
+						<p:message for="u-email" display="icon" />
+						
+					<h:outputLabel for="u-imie" value="#{txtReg.imie}" />
+					<p:inputText id="u-imie" value="#{uzytkownikEditBB.uzytkownik.imie}"
+						label="imie" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-imie" />
+					
+					<h:outputLabel for="u-nazwisko" value="#{txtReg.nazwisko}" />
+					<p:inputText id="u-nazwisko" value="#{uzytkownikEditBB.uzytkownik.nazwisko}"
+						label="nazwisko" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-nazwisko" />
+	
+
+						<h:outputLabel for="u-idRola" value="id roli:" />
+						<p:inputText id="u-idRola" value="#{uzytkownikEditBB.uzytkownik.rola.idRola}"
+							required="true" requiredMessage="podaj id roli"
+							pattern="[1-3]{1}" title="1-admin,2-moderator,3-uzytkownik" >
+						</p:inputText>
+						<p>1-admin, 2-pracownik, 3-klient, 4-zbanowany</p>
+						<p:message for="u-idRola" display="icon" />
+
+
+					</h:panelGrid>
+
+					<p:messages id="msgs" />
+
+					<p:commandButton value="Zapisz" action="#{uzytkownikEditBB.saveData()}"
+						style="margin-right: 1em;" update="@form" />
+
+					<p:button value="Anuluj" outcome="uzytkownikList" />
+				</h:form>
+
+			</p:panel>
+
+		</h:body>
+	</ui:define>
+
+</ui:composition>
+</html>

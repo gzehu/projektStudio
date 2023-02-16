@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.3"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+	
+	
+<application>
+  <!-- <resource-bundle>
+   <base-name>resources.textMain</base-name>
+   <var>txtMain</var>
+  </resource-bundle> -->
+  <resource-bundle>
+   <base-name>resources.textRegistrationErr</base-name>
+   <var>txtRegErr</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>resources.textRegistration</base-name>
+   <var>txtReg</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>resources.textLoginErr</base-name>
+   <var>txtLogErr</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>resources.textLogin</base-name>
+   <var>txtLog</var>
+  </resource-bundle>
+   <resource-bundle>
+   <base-name>resources.textEdit</base-name>
+   <var>txtEd</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>resources.textEditErr</base-name>
+   <var>txtEdErr</var>
+  </resource-bundle>
+    <resource-bundle>
+   <base-name>resources.textRezerwacje</base-name>
+   <var>txtRez</var>
+  </resource-bundle>
+      <resource-bundle>
+   <base-name>resources.textRezerwacjeErr</base-name>
+   <var>txtRezErr</var>
+  </resource-bundle>
+ 
+  <locale-config>
+   <default-locale>pl</default-locale>
+  </locale-config>
+ </application>
+	
+</faces-config>

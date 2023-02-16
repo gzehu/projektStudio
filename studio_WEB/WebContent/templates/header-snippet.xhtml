@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+	<div class="card">
+		<h:form>
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:menuitem label="Home" value="Rezerwacje"
+					icon="pi pi-fw pi-home" outcome="index" />
+
+
+
+				<p:submenu label="Logowanie" icon="pi pi-fw pi-user">
+					<p:menuitem value="#{txtLog.registrationPageButton}" icon="pi pi-fw pi-user-plus" outcome="uzytkownikRegistr" action="#{loginBB.doLogout()}"/>
+					<p:menuitem value="Zaloguj się" icon="pi pi-fw pi-sign-in" outcome="uzytkownikLogin" action="#{loginBB.doLogout()}" />
+
+				</p:submenu>
+
+				<p:submenu label="Panel admin" icon="pi pi-fw pi-table">
+					
+					<p:submenu label="Baza danych" icon="pi pi-fw pi-desktop" >
+						<p:menuitem value="Użytkownicy" icon="pi pi-fw pi-users" outcome="uzytkownikList"/>
+						<p:menuitem value="Rezerwacje" icon="pi pi-fw pi-circle-off" outcome="rezList"/>
+					</p:submenu>
+
+				</p:submenu>
+
+			
+
+				<f:facet name="options">
+				
+				
+					<p:commandButton value="Wyloguj"  action="#{loginBB.doLogout()}" icon="pi pi-fw pi-sign-out" outcome="uzytkownikLogin"
+						styleClass="ui-button-info" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
+	</div>
+</ui:composition>

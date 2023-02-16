@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<p:panel header="Rejestracja">
+
+			<h:form id="registerForm">
+				<p:messages id="msgs" />
+				<h:panelGrid id="grid" styleClass="ui-noborder" columns="3"
+					celpadding="5">
+
+					<p:outputLabel for="u-login" value="#{txtReg.login}" />
+					<p:inputText id="u-login" value="#{registrationBB.uzytkownik.login}"
+						label="Login" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-login" />
+
+					<p:outputLabel for="u-pass" value="#{txtReg.password}" />
+					<p:inputText id="u-pass" type="password"
+						value="#{registrationBB.uzytkownik.pass}" label="Haslo" required="true"
+						requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-pass" />
+
+					<p:outputLabel for="pass2" value="#{txtReg.password2}" />
+					<p:inputText id="pass2" type="password"
+						value="#{registrationBB.pass2}" label="Haslo2" required="true"
+						requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="pass2" />
+
+					<p:outputLabel for="u-email" value="#{txtReg.email}" />
+					<p:inputText id="u-email" value="#{registrationBB.uzytkownik.email}"
+						label="email" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}"		type="email">
+
+					</p:inputText>
+					<p:message for="u-email" />
+
+					<p:outputLabel for="u-imie" value="#{txtReg.imie}" />
+					<p:inputText id="u-imie" value="#{registrationBB.uzytkownik.imie}"
+						label="imie" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-imie" />
+					
+					<p:outputLabel for="u-nazwisko" value="#{txtReg.nazwisko}" />
+					<p:inputText id="u-nazwisko" value="#{registrationBB.uzytkownik.nazwisko}"
+						label="nazwisko" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-nazwisko" />
+
+					
+					
+					
+					<p:commandButton value="#{txtReg.registerButton}"
+						action="#{registrationBB.register()}" update="@form" />
+
+				</h:panelGrid>
+			</h:form>
+
+
+
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>
+</html>

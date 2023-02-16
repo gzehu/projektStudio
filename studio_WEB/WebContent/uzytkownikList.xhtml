@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<h:head>
+			<meta charset="utf-8" />
+			<title>Baza uzytkownikow</title>
+		</h:head>
+		<h:body style=" margin: 0.5em;">
+
+			<p:panel header="Opcje wyszukiwania" toggleable="true"
+				collapsed="true" style="margin-bottom: 1em;">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="Login:" />
+						<p:inputText value="#{uzytkownikListBB.login}" />
+						<p:commandButton value="Szukaj" update="form-table" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+
+			<p:messages />
+
+			<h:form id="form-table" style="margin-bottom:1em;">
+
+				
+
+				<p:dataTable value="#{uzytkownikListBB.getList()}" var="u">
+
+					<p:column priority="5">
+						<f:facet name="header">
+							<h:outputText value="#{txtEd.idUzytkownik}" />
+						</f:facet>
+						<h:outputText value="#{u.idUzytkownik}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{txtEd.login}" />
+						</f:facet>
+						<h:outputText value="#{u.login}" />
+					</p:column>
+
+					<p:column priority="4">
+						<f:facet name="header">
+							<h:outputText value="#{txtEd.email}" />
+						</f:facet>
+						<h:outputText value="#{u.email}">
+
+						</h:outputText>
+					</p:column>
+					
+						<p:column priority="4">
+						<f:facet name="header">
+							<h:outputText value="#{txtEd.imie}" />
+						</f:facet>
+						<h:outputText value="#{u.imie}">
+
+						</h:outputText>
+					</p:column>
+					
+						<p:column priority="4">
+						<f:facet name="header">
+							<h:outputText value="#{txtEd.nazwisko}" />
+						</f:facet>
+						<h:outputText value="#{u.nazwisko}">
+
+						</h:outputText>
+					</p:column>
+
+					<p:column priority="4">
+						<f:facet name="header">
+							<h:outputText value="#{txtEd.nazwa}" />
+						</f:facet>
+						<h:outputText value="#{u.rola.nazwa}">
+
+						</h:outputText>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="opcje" />
+						</f:facet>
+
+						<p:commandButton style="margin-left:4.4em" value="#{txtEd.edit}"
+							action="#{uzytkownikListBB.editUzytkownik(u)}" />
+
+
+
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+		</h:body>
+	</ui:define>
+
+</ui:composition>
+</html>

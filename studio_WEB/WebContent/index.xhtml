@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<ui:composition template="/templates/page-template.xhtml">
+<ui:define name="pageContent">
+
+		<p:panel header="Rezerwacja">
+
+			<h:form id="registerForm">
+				<p:messages id="msgs" />
+				<h:panelGrid id="grid" styleClass="ui-noborder" columns="3"
+					celpadding="5">
+
+		
+
+					
+					<p:outputLabel for="u-data" value="#{txtRez.data}" />
+					<p:inputText id="u-data" value="#{rezerwacjaBB.rezerwacja.data}"
+						label="Data" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRezErr.formatdata}">
+						<f:validateRegex pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{2}$" />
+						<f:validateLength maximum="8" />
+					</p:inputText>
+					<p:message for="u-data" />
+
+
+					<p:outputLabel for="u-godzina" value="#{txtRez.godzina}" />
+					<p:inputText id="u-godzina" value="#{rezerwacjaBB.rezerwacja.godzina}"
+						label="godzina" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRezErr.formatgodzina}">
+						<f:validateRegex pattern="^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$" />
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-godzina" />
+					
+					<h:inputHidden value="#{rezerwacjaBB.rezerwacja.potwierdzona}" rendered="false" />
+					<h:inputHidden value="#{rezerwacjaBB.rezerwacja.zakonczona}" rendered="false" />
+					
+					<p:outputLabel for="u-imie" value="#{txtRez.imie}" />
+					<p:inputText id="u-imie" value="#{rezerwacjaBB.rezerwacja.imie}"
+						label="imie" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-imie" />
+					
+					
+					<p:outputLabel for="u-nazwisko" value="#{txtRez.nazwisko}" />
+					<p:inputText id="u-nazwisko" value="#{rezerwacjaBB.rezerwacja.nazwisko}"
+						label="nazwisko" required="true" requiredMessage="#{txtRegErr.registerRequired}"
+						validatorMessage="#{txtRegErr.registerValidationLengthTxt}">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="u-nazwisko" />
+					
+
+					
+					
+					 <p:inputText  value="#{rezerwacjaBB.rezerwacja.potwierdzona}" id="hiddenfield" type="hidden" />
+  					 <p:inputText  value="#{rezerwacjaBB.rezerwacja.zakonczona}" id="hiddenfieldd" type="hidden" />
+					
+					<br />
+					
+					
+					<p:commandButton value="Zarezerwuj"
+						action="#{rezerwacjaBB.rezerwacja()}" update="@form" />
+
+				</h:panelGrid>
+				
+				
+			</h:form>
+			
+			<p:dataTable value="#{rezListBB.getListByLogin()}" var="i">
+
+			<p:column priority="1">
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{i.idRezerwacja}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Data" />
+				</f:facet>
+				<h:outputText value="#{i.data}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Godzina" />
+				</f:facet>
+				<h:outputText value="#{i.godzina}" />
+
+			</p:column>
+
+			<p:column priority="4">
+				<f:facet name="header">
+					<h:outputText value="Potwierdzona" />
+				</f:facet>
+				<h:outputText value="#{i.potwierdzona}">
+
+				</h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="zakonczona" />
+				</f:facet>
+				<h:outputText value="#{i.zakonczona}">
+
+				</h:outputText>
+			</p:column>
+
+
+
+
+		</p:dataTable>
+
+
+
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>
+</html>
